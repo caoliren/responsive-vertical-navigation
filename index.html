@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>responsive-vertical-navigation</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <ul class="g-nav">
+        <li>
+            <a href="#sec1"></a>
+        </li>
+        <li>
+            <a href="#sec2"></a>
+        </li>
+        <li>
+            <a href="#sec3"></a>
+        </li>
+        <li>
+            <a href="#sec4"></a>
+        </li>
+    </ul>
+    <section id="sec1" class="m-section"></section>
+    <section id="sec2" class="m-section"></section>
+    <section id="sec3" class="m-section"></section>
+    <section id="sec4" class="m-section"></section>
+
+    <script src="https://cdn.bootcss.com/jquery/2.0.2/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        $('.g-nav').verticalNav({
+            contentSections: $('.m-section'),
+            advanceAmount: $(window).height()/2     // 提前量
+        });
+    </script>
+</body>
+
+</html>
