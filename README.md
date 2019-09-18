@@ -14,3 +14,5 @@ a jq responsive-vertical-navigation
     advanceAmount: $(window).height()/2     // How many distances are triggered in advance
   });
 ```
+## Demo
+   https://caoliren.github.io/responsive-vertical-navigation/index.html
