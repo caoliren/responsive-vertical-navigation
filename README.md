@@ -20,7 +20,8 @@ a jq responsive-vertical-navigation
   $('.g-nav').verticalNav({
     nav: $('.g-nav'),
     contentSections: $('.m-section'),
-    advanceAmount: $(window).height()/2,    // How many distances are triggered in clickDotOffset: 80 // click nav point offset, default 0
+    advanceAmount: $(window).height()/2,    // How many distances are triggered in 
+    clickDotOffset: 80 // click nav point offset, default 0
   });
 ```
 ## Demo
