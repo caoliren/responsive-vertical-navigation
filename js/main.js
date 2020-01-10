@@ -1,41 +1,64 @@
 (function ($) {
+  $.fn.verticalNav = function (options) {
+    var navContainer = $(this);
+    var contentSections = options.contentSections;
+    var navTtems = navContainer.find('>li');
+    var advanceAmount = options.advanceAmount || 0;
+    var timer = null;
 
-    $.fn.verticalNav = function (options) { 
-        var navContainer = $(this);
-        var contentSections = options.contentSections;
-        var navTtems = navContainer.find('>li');
-        var advanceAmount = options.advanceAmount || 0;
+    updateNavigation();
+    $(window).on('scroll', function () {
+      if (!timer) {
+        timer = setTimeout(function () {
+          updateNavigation(timer);
+        }, 100);
+      }
+    });
 
-      updateNavigation();
-      $(window).on('scroll', function () {
-        updateNavigation();
+    navTtems.on('click', function (event) {
+      event.preventDefault();
+      smoothScroll($($(this).find('a').get(0).hash));
+    });
+
+
+    function updateNavigation() {
+      var scrollTop = $(window).scrollTop();
+      if (scrollTop > displayHeight) {
+        if (!floatNavOnoff) {
+          floatNavOnoff = true;
+          gNav.addClass('f-float');
+        }
+
+      } else {
+        if (floatNavOnoff) {
+          floatNavOnoff = false;
+          gNav.removeClass('f-float');
+        }
+      }
+      contentSections.each(function (index) {
+
+        $this = $(this);
+        if (($this.offset().top - advanceAmount < scrollTop) && ($this.offset()
+            .top +
+            $this.height() - advanceAmount > scrollTop)) {
+          navTtems.eq(index).addClass('active');
+
+
+        } else {
+          navTtems.eq(index).removeClass('active');
+        }
       });
 
-      navTtems.on('click', function (event) {
-        event.preventDefault();
-        smoothScroll($($(this).find('a').get(0).hash));
-      });
-
-
-      function updateNavigation() {
-        contentSections.each(function (index) {
-          $this = $(this);
-          if (($this.offset().top - advanceAmount < $(window).scrollTop()) && ($this.offset().top +
-              $this.height() - advanceAmount > $(window).scrollTop())) {
-            navTtems.eq(index).addClass('active');
-
-          } else {
-              navTtems.eq(index).removeClass('active');
-          }
-        });
-      }
-
-      function smoothScroll(target) {
-        $('body,html').animate({
-            'scrollTop': target.offset().top
-          },
-          600
-        );
-      }
+      timer = null
     }
-}( jQuery ))
+
+    function smoothScroll(target) {
+      var offset = options.clickDotOffset || 100
+      $('body,html').animate({
+          'scrollTop': target.offset().top - offset
+        },
+        600
+      );
+    }
+  }
+}(jQuery))
