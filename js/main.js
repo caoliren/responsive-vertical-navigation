@@ -53,7 +53,7 @@
     }
 
     function smoothScroll(target) {
-      var offset = options.clickDotOffset || 100
+      var offset = options.clickDotOffset || 0
       $('body,html').animate({
           'scrollTop': target.offset().top - offset
         },
