@@ -23,27 +23,12 @@
 
     function updateNavigation() {
       var scrollTop = $(window).scrollTop();
-      if (scrollTop > displayHeight) {
-        if (!floatNavOnoff) {
-          floatNavOnoff = true;
-          gNav.addClass('f-float');
-        }
-
-      } else {
-        if (floatNavOnoff) {
-          floatNavOnoff = false;
-          gNav.removeClass('f-float');
-        }
-      }
       contentSections.each(function (index) {
-
         $this = $(this);
         if (($this.offset().top - advanceAmount < scrollTop) && ($this.offset()
             .top +
             $this.height() - advanceAmount > scrollTop)) {
           navTtems.eq(index).addClass('active');
-
-
         } else {
           navTtems.eq(index).removeClass('active');
         }
