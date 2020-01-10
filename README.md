@@ -2,6 +2,16 @@
 a jq responsive-vertical-navigation
 
 ## Setup
+```html
+   <ul class="g-nav">
+     <li>
+         <a href="#sec1"></a>
+     </li>
+     <li>
+         <a href="#sec2"></a>
+     </li>
+ </ul>
+```
 ```javascript
    <script src="https://cdn.bootcss.com/jquery/2.0.2/jquery.min.js"></script>
    <script src="js/main.js"></script>
@@ -10,6 +20,7 @@ a jq responsive-vertical-navigation
 
 ```javascript
   $('.g-nav').verticalNav({
+    nav: $('.g-nav'),
     contentSections: $('.m-section'),
     advanceAmount: $(window).height()/2     // How many distances are triggered in advance
   });
