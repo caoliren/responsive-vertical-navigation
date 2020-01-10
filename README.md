@@ -7,10 +7,8 @@ a jq responsive-vertical-navigation
      <li>
          <a href="#sec1"></a>
      </li>
-     <li>
-         <a href="#sec2"></a>
-     </li>
- </ul>
+   </ul>
+   <section id="sec1" class="m-section"></section>
 ```
 ```javascript
    <script src="https://cdn.bootcss.com/jquery/2.0.2/jquery.min.js"></script>
